@@ -60,10 +60,13 @@ Note: more about these requirements, [visit here](https://support.google.com/goo
 2. Open the **GPGPCDE** and login with your Google account.
 3. Allow `USB debugging`, check `Always allow from this computer`, then click `Allow`.
 
-If the **GPGPCDE** page display is blank (sleep), use:
- - **PgDn** keys <kbd>↓</kbd>
- - **Click & swipe up**
- - **Scroll with mouse** (PC mode).
+Note: 
+- When you **sign out**, your local **device image**, including **any games** you have installed, will be <u>**erased**</u>.
+- If the **GPGPCDE** page display is blank (sleep), use:
+  - **PgDn** keys <kbd>↓</kbd>
+  - **Click & swipe up**
+  - **Scroll with mouse** (PC mode).
+- [Navigation (keyboard shortcuts)](#gpgpcde-navigation)
 
 ㅤ
 ### 3. Aow Tools
@@ -212,6 +215,7 @@ If the **GPGPCDE** page display is blank (sleep), use:
 - [App Manager](https://github.com/MuntashirAkon/AppManager?tab=readme-ov-file)
 - [DataBackup](https://github.com/XayahSuSuSu/Android-DataBackup?tab=readme-ov-file)
 - [Termux](https://github.com/termux/termux-app?tab=readme-ov-file)
+- [AFWall+](https://github.com/ukanth/afwall?tab=readme-ov-file)
 - [Game Guardian](https://gameguardian.net/download) - [Bypass SDK enforcement](https://gameguardian.net/forum/topic/38963-game-guardian-android-14/)
 
 ㅤ
