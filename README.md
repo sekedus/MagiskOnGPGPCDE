@@ -6,6 +6,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 ㅤ
 ## Table of Contents
+
 - [Minimum System Requirements](#minimum-system-requirements)
 - [Installation](#installation)
   - [1. Requirements](#1-requirements)
@@ -40,7 +41,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
   - [Enable virtualization](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1)
   - [Enable Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
 
-Note: more about these requirements, [visit here](https://support.google.com/googleplay?p=eligibility_requirements).
+**Note**: more about these requirements, [read here](https://support.google.com/googleplay?p=eligibility_requirements).
 
 ㅤ
 ## Installation
@@ -56,12 +57,13 @@ Note: more about these requirements, [visit here](https://support.google.com/goo
 ㅤ
 ### 2. Google Play Games on PC Developer Emulator (GPGPCDE)
 
-1. Download & install the **GPGPCDE**.
-2. Open the **GPGPCDE** and login with your Google account.
+1. Download & install **GPGPCDE** (Stable Edition).
+2. Open **GPGPCDE** and login with your Google account.
 3. Allow `USB debugging`, check `Always allow from this computer`, then click `Allow`.
 
-Note: 
-- When you **sign out**, your local **device image**, including **any games** you have installed, will be <u>**erased**</u>.
+ㅤ  
+**Note**: 
+- When you **sign out**, your local **device files**, including **any apps/games** you have installed, will be <ins>**erased**</ins>.
 - If the **GPGPCDE** page display is blank (sleep), use:
   - **PgDn** keys <kbd>↓</kbd>
   - **Click & swipe up**
@@ -71,12 +73,12 @@ Note:
 ㅤ
 ### 3. Aow Tools
 
-1. Install the **Aow Tools** by clicking the **Free Trial** button.  
-  Don’t worry, this app supports <u>unlimited trials without limitations</u>.  
+1. Install **Aow Tools** by clicking the **Free Trial** button.  
+  Don’t worry, this app supports <ins>unlimited trials without limitations</ins>.  
   You can **support** the developer by purchasing the app.
 2. Open **Aow Tools** and click the `⚙ Settings` menu in the left navigation bar.
     - `Adb Config` section > `Adb.exe Current Path` > `Select Adb.exe`
-    - Paste the following path into the address bar:  
+    - Paste the following path into the address bar in File Explorer:  
     `C:\Program Files\Google\Play Games Developer Emulator\current\emulator`
     - Add `adb.exe` file.
 3. Open **Aow Tools** and click the `? Help` menu in the left navigation bar.
@@ -86,16 +88,20 @@ Note:
 ㅤ
 ### 4. Copy/backup `aggregate.img` & `bios.rom`
 
-1. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
-2. Copy/backup the `aggregate.img` & `bios.rom` file to another folder.
-3. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
+1. Create **GPGPCDE** folder:
+    - Open **File Explorer**
+    - Go to **Desktop** or `%UserProfile%\Desktop`
+    - create a new folder "**GPGPCDE**"
+2. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
+3. Copy/backup the `aggregate.img` & `bios.rom` file to `%UserProfile%\Desktop\GPGPCDE` folder.
+4. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
 
 ㅤ
 ### 5. Magisk
 
 1. Download the **Magisk** app.
 2. Open **Aow Tools** > `Install` > You can drag and drop APK files to install Android apps.
-3. Install the **Magisk** app.
+3. Install **Magisk**.
 4. Open **GPGPCDE**, You will see **Magisk** installed in the app drawer.
 
 ㅤ
@@ -104,16 +110,17 @@ Note:
 1. Open **Aow Tools** > `File` > `Download` folder > click `↑ Upload` (bottom navigation bar).
 2. Upload the `1.boot_a.img` file.
 3. Open **GPGPCDE** > open **Magisk**.
-4. Click the `Install` button in the Magisk card
+4. Click the `Install` button in the **Magisk card**
 5. Choose `Select and Patch a File` in method, and select the `1.boot_a.img` file.
 6. Click `LET'S GO` and wait for the `All done!` message.
 7. Go back to **Aow Tools** > `File` > `Download` folder
 8. Select the `magisk_patched-xxxxx_xxxxx.img` file and click `↓ Download`
+9. Save to `%UserProfile%\Desktop\GPGPCDE`
 
 ㅤ
 ### 7. Edit `magisk_patched-xxxxx_xxxxx.img`
 
-1. Download & extract the **HxD Portable**.
+1. Download & extract **HxD Portable**.
 2. Open the `magisk_patched-xxxxx_xxxxx.img` file with **HxD**.
 3. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
     - **Search for**: `,avb=vbmeta`
@@ -172,26 +179,29 @@ Note:
 ㅤ
 ### 10. Replace with patched files
 
-1. Close the **GPGPCDE**, then in the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** and click `Exit`.
-2. Copy & paste `aggregate.img` & `bios.rom` file to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`.
+1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Exit`.
+2. Copy & paste patched files (`aggregate.img` & `bios.rom`) to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`.
 3. Reopen **GPGPCDE**.
+4. Open **Magisk** > You will be prompted with `Requires Additional Setup`
+5. Click `OK`, wait until **GPGPCDE** finishes rebooting.
 
 ㅤ
 ## Install apps
 
 ### AdAway
 
-1. Open **Magisk** -> `⚙` Settings (top right corner) -> click `Systemless hosts`.
-2. Restart **GPGPCDE**.
-2. Download [AdAway](https://github.com/AdAway/AdAway?tab=readme-ov-file) and install with **Aow Tools**.
-3. Open **AdAway** > `Root based ad blocking` > grant **root access**.
-4. Sync **AdAway** > `NEXT` > `FINISH`.
+1. Open **Magisk** > `⚙` Settings (top right corner) > `Magisk` section > click `Systemless hosts`.
+2. Clos & exit **GPGPCDE** ([#10-1](#10-replace-with-patched-files)).
+3. Reopen **GPGPCDE**.
+4. Download and install [AdAway](https://github.com/AdAway/AdAway?tab=readme-ov-file) with **Aow Tools**.
+5. Open **AdAway** > select `Root based ad blocking` > grant **root access** > `NEXT`.
+6. Sync **AdAway** > `NEXT` > `FINISH`.
 
 ㅤ
 ### Aurora Store
 
 1. Download [Aurora Store v4.4.4 (58)](https://gitlab.com/AuroraOSS/AuroraStore/-/releases/4.4.4) and install with **Aow Tools**
-2. Open the **Aurora Store** > setup : 
+2. Open **Aurora Store** > setup : 
     - Installer: `Root installer` > grant **root access**
     - Permissions: Grant `Background Downloads`, `External Storage Manager`, and `Notifications`
     - Click `Finish`
