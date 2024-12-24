@@ -13,6 +13,8 @@ Tested on:
 
 ![GPGPCDE-root-check](./GPGPCDE-root-check.png)
 
+![GPGPCDE-install-unknown](./GPGPCDE-install-unknown.png)
+
 ![GPGPCDE-test-game-1](./GPGPCDE-game-test-1.png)
 
 ![GPGPCDE-test-game-2](./GPGPCDE-game-test-2.png)
