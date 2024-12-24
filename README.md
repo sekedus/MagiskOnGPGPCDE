@@ -7,25 +7,27 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ㅤ
 ## Table of Contents
 
-- [Minimum System Requirements](#minimum-system-requirements)
+- [Minimum system requirements](#minimum-system-requirements)
 - [Installation](#installation)
   - [1. Requirements](#1-requirements)
   - [2. Google Play Games on PC Developer Emulator (GPGPCDE)](#2-google-play-games-on-pc-developer-emulator-gpgpcde)
   - [3. Aow Tools](#3-aow-tools)
-  - [4. Copy/Backup `aggregate.img` & `bios.rom`](#4-copybackup-aggregateimg--biosrom)
-  - [5. Magisk](#5-magisk)
-  - [6. Patch `1.boot_a.img`](#6-patch-1boot_aimg)
-  - [7. Edit `magisk_patched-xxxxx_xxxxx.img`](#7-edit-magisk_patched-xxxxx_xxxxximg)
-  - [8. Add Patched Boot Image to `aggregate.img`](#8-add-patched-boot-image-to-aggregateimg)
-  - [9. Edit `bios.rom`](#9-edit-biosrom)
-  - [10. Replace with Patched Files](#10-replace-with-patched-files)
-- [Install Apps](#install-apps)
+  - [4. Magisk](#4-magisk)
+  - [5. Create folder](#5-create-folder)
+  - [6. Copy/backup `aggregate.img` & `bios.rom`](#6-copybackup-aggregateimg--biosrom)
+  - [7. Patch `1.boot_a.img`](#7-patch-1boot_aimg)
+  - [8. Edit `magisk_patched-xxxxx_xxxxx.img`](#8-edit-magisk_patched-xxxxx_xxxxximg)
+  - [9. Add patched boot image to `aggregate.img`](#9-add-patched-boot-image-to-aggregateimg)
+  - [10. Edit `bios.rom`](#10-edit-biosrom)
+  - [11. Replace with patched files](#11-replace-with-patched-files)
+- [Install apps](#install-apps)
   - [AdAway](#adaway)
   - [Aurora Store](#aurora-store)
-  - [Other Apps](#other-apps)
+  - [Other apps](#other-apps)
 - [Others](#others)
   - [GPGPCDE Navigation](#gpgpcde-navigation)
   - [Screenshot](#screenshot)
+  - [Method: 2](#method-2)
 - [Credits](#credits)
 
 ㅤ
@@ -86,18 +88,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 5. Click the `Device` menu. **GPGPCDE** device (`vsoc_kiwi_x86_64`) will be visible and show `Online` status.
 
 ㅤ
-### 4. Copy/backup `aggregate.img` & `bios.rom`
-
-1. Create **GPGPCDE** folder:
-    - Open **File Explorer**
-    - Go to **Desktop** or `%UserProfile%\Desktop`
-    - create a new folder "**GPGPCDE**"
-2. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
-3. Copy/backup the `aggregate.img` & `bios.rom` file to `%UserProfile%\Desktop\GPGPCDE` folder.
-4. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
-
-ㅤ
-### 5. Magisk
+### 4. Magisk
 
 1. Download the **Magisk** app.
 2. Open **Aow Tools** > `Install` > You can drag and drop APK files to install Android apps.
@@ -105,20 +96,34 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 4. Open **GPGPCDE**, You will see **Magisk** installed in the app drawer.
 
 ㅤ
-### 6. Patch `1.boot_a.img`
+### 5. Create folder
+
+1. Open **File Explorer**.
+2. Go to **Desktop** or `%UserProfile%\Desktop`.
+3. Create a new folder "**GPGPCDE**".
+
+ㅤ
+### 6. Copy/backup `aggregate.img` & `bios.rom`
+
+1. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
+2. Copy/backup the `aggregate.img` & `bios.rom` file to `%UserProfile%\Desktop\GPGPCDE` folder.
+3. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
+
+ㅤ
+### 7. Patch `1.boot_a.img`
 
 1. Open **Aow Tools** > `File` > `Download` folder > click `↑ Upload` (bottom navigation bar).
 2. Upload the `1.boot_a.img` file.
 3. Open **GPGPCDE** > open **Magisk**.
 4. Click the `Install` button in the **Magisk card**
-5. Choose `Select and Patch a File` in method, and select the `1.boot_a.img` file.
+5. Choose `Select and Patch a File` in method, double click the `1.boot_a.img` file.
 6. Click `LET'S GO` and wait for the `All done!` message.
 7. Go back to **Aow Tools** > `File` > `Download` folder
 8. Select the `magisk_patched-xxxxx_xxxxx.img` file and click `↓ Download`
 9. Save to `%UserProfile%\Desktop\GPGPCDE`
 
 ㅤ
-### 7. Edit `magisk_patched-xxxxx_xxxxx.img`
+### 8. Edit `magisk_patched-xxxxx_xxxxx.img`
 
 1. Download & extract **HxD Portable**.
 2. Open the `magisk_patched-xxxxx_xxxxx.img` file with **HxD**.
@@ -128,41 +133,41 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
     - **Search direction**: `All`
     - Select `Prompt on replace` (optional)
     - Click `OK`
-      
+
       ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-replace.png)
-      
+
       ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-before-after.png)
 4. Select **all** the hex bytes of the file (<kbd>Ctrl</kbd>+<kbd>a</kbd>), then right-click and select `Select block...` (<kbd>Ctrl</kbd>+<kbd>e</kbd>).
 5. Check the `Length` section and copy the value.
-    
+
     ![GPGPCDE-edit-magisk-patched-select](./images/GPGPCDE-edit-magisk-patched-select.png)
 
 ㅤ
-### 8. Add patched boot image to `aggregate.img`
+### 9. Add patched boot image to `aggregate.img`
 
 1. Open the `aggregate.img` file with **HxD**.
 2. Open search box (<kbd>Ctrl</kbd>+<kbd>f</kbd>) > `Text-string` section :
     - **Search for**: `ANDROID!`
     - **Search direction**: `All`
     - Click `Search all`
-      
+
       ![GPGPCDE-add-patched-boot-image-search](./images/GPGPCDE-add-patched-boot-image-search.png)
 3. In the `Result` section > `Search ({N} hits)` > double click the last match.
-      
+
     ![GPGPCDE-add-patched-boot-image-search-result](./images/GPGPCDE-add-patched-boot-image-search-result.png)
 4. Right-click on the selected text, then select `Select block...` :
-    - Check the `Length` section and fill it with the **length** of file `magisk_patched-xxxxx_xxxxx.img` ([#7-5](#7-edit-magisk_patched-xxxxx_xxxxximg)).
+    - Check the `Length` section and fill it with the **length** of file `magisk_patched-xxxxx_xxxxx.img` ([#8-5](#8-edit-magisk_patched-xxxxx_xxxxximg)).
     - Click `OK`
-      
+
       ![GPGPCDE-add-patched-boot-image-select](./images/GPGPCDE-add-patched-boot-image-select.png)
-5. Go back to `magisk_patched-xxxxx_xxxxx.img` file, then copy all the hex bytes of the file ([#7-4](#7-edit-magisk_patched-xxxxx_xxxxximg)).
+5. Go back to `magisk_patched-xxxxx_xxxxx.img` file, then copy all the hex bytes of the file ([#8-4](#8-edit-magisk_patched-xxxxx_xxxxximg)).
 6. Replace the **selected text** in the `aggregate.img` file with the copied bytes.
-    
+
     ![GPGPCDE-add-patched-boot-image-before-after](./images/GPGPCDE-add-patched-boot-image-before-after.png)
 7. **Save**.
 
 ㅤ
-### 9. Edit `bios.rom`
+### 10. Edit `bios.rom`
 
 1. Open the `bios.rom` file with **HxD**.
 2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
@@ -170,20 +175,20 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
     - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `9`
     - **Search direction**: `All`
     - Click `OK`
-      
+
       ![GPGPCDE-edit-bios.rom-replac](./images/GPGPCDE-edit-bios.rom-replace.png)
 
       ![GPGPCDE-edit-bios.rom-before-after](./images/GPGPCDE-edit-bios.rom-before-after.png)
 3. **Save**.
 
 ㅤ
-### 10. Replace with patched files
+### 11. Replace with patched files
 
 1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Exit`.
 2. Copy & paste patched files (`aggregate.img` & `bios.rom`) to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`.
 3. Reopen **GPGPCDE**.
-4. Open **Magisk** > You will be prompted with `Requires Additional Setup`
-5. Click `OK`, wait until **GPGPCDE** finishes rebooting.
+4. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
+5. Wait until **GPGPCDE** finishes rebooting.
 
 ㅤ
 ## Install apps
@@ -191,7 +196,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ### AdAway
 
 1. Open **Magisk** > `⚙` Settings (top right corner) > `Magisk` section > click `Systemless hosts`.
-2. Clos & exit **GPGPCDE** ([#10-1](#10-replace-with-patched-files)).
+2. Close & exit **GPGPCDE** ([#11-1](#11-replace-with-patched-files)).
 3. Reopen **GPGPCDE**.
 4. Download and install [AdAway](https://github.com/AdAway/AdAway?tab=readme-ov-file) with **Aow Tools**.
 5. Open **AdAway** > select `Root based ad blocking` > grant **root access** > `NEXT`.
@@ -219,6 +224,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 - [Shortcut Maker](https://play.google.com/store/apps/details?id=rk.android.app.shortcutmaker)
 - [Soft Keys 2](https://github.com/dogusumit/SoftKeys2-HomeBackButton?tab=readme-ov-file) or [Back Button](https://play.google.com/store/apps/details?id=mavie.shadowsong.bb)
 - [KillApps](https://play.google.com/store/apps/details?id=com.tafayor.killall)
+- [ZArchiver](https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver)
 - [Amaze File Manager](https://github.com/TeamAmaze/AmazeFileManager?tab=readme-ov-file)
 - [Fossify Gallery](https://github.com/FossifyOrg/Gallery?tab=readme-ov-file)
 - [Magisk Modules Repo Loader (MMRL)](https://github.com/DerGoogler/MMRL?tab=readme-ov-file)
@@ -245,6 +251,9 @@ Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are prov
 
 
 ### [Screenshot](./screenshot/README.md)
+
+
+### [Method: 2](./2/README.md)
 
 ㅤ
 ## Credits

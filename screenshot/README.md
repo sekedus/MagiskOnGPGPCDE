@@ -1,7 +1,7 @@
 # Screenshot
 
 Tested on: 
-- Google Play Games on PC Developer Emulator (GPGPCDE): `132.0.6833.0`
+- Google Play Games on PC Developer Emulator (GPGPCDE): `132.0.6833.0` (Stable Edition)
 - Magisk: `28.1`
 
 ㅤ
