@@ -18,15 +18,18 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
   - [7. Patch `1.boot_a.img`](#7-patch-1boot_aimg)
   - [8. Edit `magisk_patched-xxxxx_xxxxx.img`](#8-edit-magisk_patched-xxxxx_xxxxximg)
   - [9. Add patched boot image to `aggregate.img`](#9-add-patched-boot-image-to-aggregateimg)
-  - [10. Edit `bios.rom`](#10-edit-biosrom)
-  - [11. Replace with patched files](#11-replace-with-patched-files)
-  - [12. Remove install restriction](#12-remove-install-restriction)
+  - [10. Enable `Apps` on **Play Store** (optional)](#10-enable-apps-on-play-store-optional)
+  - [11. Edit `bios.rom`](#11-edit-biosrom)
+  - [12. Replace with patched files](#12-replace-with-patched-files)
+  - [13. Remove install restriction](#13-remove-install-restriction)
 - [Install apps](#install-apps)
   - [AdAway](#adaway)
   - [Aurora Store](#aurora-store)
   - [Other apps](#other-apps)
 - [Others](#others)
-  - [GPGPCDE Navigation](#gpgpcde-navigation)
+  - [GPGPCDE: Release Notes](#gpgpcde-release-notes)
+  - [GPGPCDE: Update](#gpgpcde-update)
+  - [GPGPCDE: Navigation](#gpgpcde-navigation)
   - [Screenshot](#screenshot)
   - [Method: 2](#method-2)
 - [Credits](#credits)
@@ -43,6 +46,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 - Hardware virtualization must be turned on:
   - [Enable virtualization](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-c5578302-6e43-4b4b-a449-8ced115f58e1)
   - [Enable Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+  - [Enable Hyper-V (CLI)](https://learn.microsoft.com/en-au/answers/questions/2083999/hyper-v-not-working#answer-1842490)
 
 **Note**: more about these requirements, [read here](https://support.google.com/googleplay?p=eligibility_requirements).
 
@@ -66,7 +70,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 ㅤ  
 **Note**: 
-- When you **sign out**, your local **device files**, including **any apps/games** you have installed, will be <ins>**erased**</ins>.
+- ⚠️ When you **sign out**, your local **device files**, including **any apps/games** you have installed, will be <ins>**erased**</ins>.
 - If the **GPGPCDE** page display is blank (sleep), use:
   - **PgDn** keys <kbd>↓</kbd>
   - **Click & swipe up**
@@ -77,9 +81,10 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ### 3. Aow Tools
 
 1. Install **Aow Tools** by clicking the **Free Trial** button.  
-  Don’t worry, this app supports <ins>unlimited trials without limitations</ins>.  
-  You can **support** the developer by purchasing the app.
+   Don’t worry, this app supports <ins>unlimited trials without limitations</ins>.  
+   You can **support** the developer by purchasing the app.
 2. Open **Aow Tools** and click the `⚙ Settings` menu in the left navigation bar.
+
     - `Adb Config` section > `Adb.exe Current Path` > `Select Adb.exe`
     - Paste the following path into the address bar in File Explorer:  
     `C:\Program Files\Google\Play Games Developer Emulator\current\emulator`
@@ -168,22 +173,55 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 7. **Save**.
 
 ㅤ
-### 10. Edit `bios.rom`
+### 10. Enable `Apps` on **Play Store** (optional)
+
+> [!CAUTION]  
+> This method removes the [com.google.android.play.feature.HPE_EXPERIENCE](https://developer.android.com/games/playgames/pc-compatibility#detect-hpe) feature, causing the Play Store to recognize GPGPCDE as a regular Android mobile device.
+>
+> This approach has [several drawbacks](https://www.google.com/search?hl=en&udm=50&q=What+is+%22com.google.android.play.feature.HPE_EXPERIENCE%22+and+what+are+the+advantages+and+disadvantages+of+disabling+it+in+Google+Play+Games+on+PC+Developer+Emulator+%28GPGPCDE%29%3F):
+>
+> - Environment detection fails
+> - PC-specific features are disabled
+> - Compatibility risks
+> - And more...
+
+<br/>
+
+1. Open the `aggregate.img` file with **HxD**.
+2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+
+    - **Search for**: `<feature name="com.google.android.play.feature.HPE_EXPERIENCE" />`
+    - **Replace with**: "&#60;!--&#160;&#160;&#160;&#160;&#160;&#160;com.google.android.play.feature.HPE_EXPERIENCE&#160;&#160;&#160;&#160;&#160;&#160;--&#62;" (without quotation marks) `65`
+    - **Search direction**: `All`
+    - Click `OK`
+
+      ![GPGPCDE-enable-apps-on-playstore](./images/GPGPCDE-enable-apps-on-playstore.png)
+
+      ![GPGPCDE-enable-apps-on-playstore-before-after](./images/GPGPCDE-enable-apps-on-playstore-before-after.png)
+3. **Save**.
+4. Google Play Store tweaks:
+    - **Stop auto update** Play Store: [read here](https://support.google.com/googleplay/thread/248186520?hl=en&msgid=248188080)
+    - Turn off **Google Play Protect**: [read here](https://support.google.com/googleplay/answer/2812853?hl=en#:~:text=How%20to%20turn%20Google%20Play%20Protect%20on%20or%20off)
+    - Turn off **app install optimization**: [read here](https://support.google.com/googleplay/answer/10122796?hl=en#:~:text=Turn%20app%20install%20optimization%20on%20or%20off)
+
+ㅤ
+### 11. Edit `bios.rom`
 
 1. Open the `bios.rom` file with **HxD**.
 2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+
     - **Search for**: `verified_`
     - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `9`
     - **Search direction**: `All`
     - Click `OK`
 
-      ![GPGPCDE-edit-bios.rom-replac](./images/GPGPCDE-edit-bios.rom-replace.png)
+      ![GPGPCDE-edit-bios.rom-replace](./images/GPGPCDE-edit-bios.rom-replace.png)
 
       ![GPGPCDE-edit-bios.rom-before-after](./images/GPGPCDE-edit-bios.rom-before-after.png)
 3. **Save**.
 
 ㅤ
-### 11. Replace with patched files
+### 12. Replace with patched files
 
 1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Exit`.
 2. Copy & paste patched files (`aggregate.img` & `bios.rom`) to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`.
@@ -192,7 +230,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 5. Wait until **GPGPCDE** finishes rebooting.
 
 ㅤ
-### 12. Remove install restriction
+### 13. Remove install restriction
 
 1. Download Magisk Module [`HPESuperpower.zip`](https://github.com/sekedus/MagiskOnGPGPCDE/raw/refs/heads/main/module/HPESuperpower.zip) by [ChsBuffer](https://github.com/chsbuffer)
 2. Open **Aow Tools** > `File` > `Download` folder > `↑ Upload` (bottom navigation bar).
@@ -211,7 +249,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ### AdAway
 
 1. Open **Magisk** > `⚙` Settings (top right corner) > `Magisk` section > click `Systemless hosts`.
-2. Close & exit **GPGPCDE** ([#11-1](#11-replace-with-patched-files)).
+2. Close & exit **GPGPCDE** ([#12-1](#12-replace-with-patched-files)).
 3. Reopen **GPGPCDE**.
 4. Download and install [AdAway](https://github.com/AdAway/AdAway?tab=readme-ov-file) with **Aow Tools**.
 5. Open **AdAway** > select `Root based ad blocking` > grant **root access** > `NEXT`.
@@ -227,7 +265,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
       - `External Storage Manager`
       - `Background Downloads`
       - `Notifications`
-      - `App Links`
+      - `App Links` - [supported links are grayed out](https://www.reddit.com/r/GrapheneOS/comments/16f7mg2/in_aurora_store_settings_playgooglecom_in_open/)
     - Click `Finish`
 3. Click the **3 dots** in the top right corner :
     - `Spoof manager` > select `Device`, e.g.: `Samsung S20 Ultra` > `Restart`
@@ -240,6 +278,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 - [Advanced Root Checker](https://play.google.com/store/apps/details?id=com.anu.developers3k.rootchecker)
 - [Lawnchair](https://github.com/LawnchairLauncher/lawnchair?tab=readme-ov-file)
+- [Device Info HW](https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw)
 - [Shortcut Maker](https://play.google.com/store/apps/details?id=rk.android.app.shortcutmaker)
 - [Soft Keys 2](https://github.com/dogusumit/SoftKeys2-HomeBackButton?tab=readme-ov-file) or [Back Button](https://play.google.com/store/apps/details?id=mavie.shadowsong.bb)
 - [KillApps](https://play.google.com/store/apps/details?id=com.tafayor.killall)
@@ -256,7 +295,24 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ㅤ
 ## Others
 
-### GPGPCDE Navigation
+### GPGPCDE: Release Notes
+
+Read the current [release notes](https://support.google.com/googleplay?p=games_pc_release_notes).
+
+
+### GPGPCDE: Update
+
+1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Check for updates`.
+2. Click the `Check for update` button, if an update is available a `Download` button will appear.
+3. Click `Download` and wait for update to complete and `Relaunch` button to appear.
+4. Click `Relaunch`, if **GPGPCDE** is not running, launch it manually.
+5. Re-root **GPGPCDE**, starting from step [#6](#6-copybackup-aggregateimg--biosrom) through [#13](#13-remove-install-restriction).
+6. Open **GPGPCDE** > Open **Magisk**, validate root has been successful.
+7. Close & exit **GPGPCDE**
+8. Reopen **GPGPCDE**.
+
+
+### GPGPCDE: Navigation
 
 GPGPCDE keyboard shortcuts:
 - <kbd>Ctrl</kbd> + <kbd>h</kbd>: press the home button
@@ -278,6 +334,7 @@ Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are prov
 ## Credits
 
 - [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596)
+- [XDA Forums t-4486817#post-90018526](https://xdaforums.com/t/4486817/post-90018526)
 - [ChsBuffer](https://github.com/chsbuffer)
 - [XDA Forums t-4656397](https://xdaforums.com/t/4656397/)
 - [XDA Sideloading apps on GPGPCDE](https://www.xda-developers.com/sideload-apps-on-google-play-games-emulator/)
