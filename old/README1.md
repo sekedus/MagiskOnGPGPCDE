@@ -1,28 +1,37 @@
-# Magisk on GPGPCDE: Method 2
+# Magisk on GPGPC Developer Emulator
 
 Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
+
+> This repository was created based on a comment in the [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596).
 
 ㅤ
 ## Table of Contents
 
-- [Minimum System Requirements](#minimum-system-requirements)
+- [Minimum system requirements](#minimum-system-requirements)
 - [Installation](#installation)
-  - [Requirements](#1-requirements)
-  - [Google Play Games on PC Developer Emulator (GPGPCDE)](#2-google-play-games-on-pc-developer-emulator-gpgpcde)
-  - [Aow Tools](#3-aow-tools)
-  - [Magisk](#4-magisk)
-  - [Create Folder](#5-create-folder)  
-  - [Root with `hpesuperpower`](#6-root-with-hpesuperpower)
-  - [Enable `Apps` on **Play Store** (optional)](#7-enable-apps-on-play-store-optional)
-- [Install Apps](#install-apps)
+  - [1. Requirements](#1-requirements)
+  - [2. Google Play Games on PC Developer Emulator (GPGPCDE)](#2-google-play-games-on-pc-developer-emulator-gpgpcde)
+  - [3. Aow Tools](#3-aow-tools)
+  - [4. Magisk](#4-magisk)
+  - [5. Create folder](#5-create-folder)
+  - [6. Copy/backup `aggregate.img` & `bios.rom`](#6-copybackup-aggregateimg--biosrom)
+  - [7. Patch `1.boot_a.img`](#7-patch-1boot_aimg)
+  - [8. Edit `magisk_patched-xxxxx_xxxxx.img`](#8-edit-magisk_patched-xxxxx_xxxxximg)
+  - [9. Add patched boot image to `aggregate.img`](#9-add-patched-boot-image-to-aggregateimg)
+  - [10. Enable `Apps` on **Play Store** (optional)](#10-enable-apps-on-play-store-optional)
+  - [11. Edit `bios.rom`](#11-edit-biosrom)
+  - [12. Replace with patched files](#12-replace-with-patched-files)
+  - [13. Remove install restriction](#13-remove-install-restriction)
+- [Install apps](#install-apps)
   - [AdAway](#adaway)
   - [Aurora Store](#aurora-store)
-  - [Other Apps](#other-apps)
+  - [Other apps](#other-apps)
 - [Others](#others)
   - [GPGPCDE: Release Notes](#gpgpcde-release-notes)
   - [GPGPCDE: Update](#gpgpcde-update)
   - [GPGPCDE: Navigation](#gpgpcde-navigation)
-  - [Method: 1](#method-1)
+  - [Screenshot](#screenshot)
+  - [Method: 2](#method-2)
 - [Credits](#credits)
 
 ㅤ
@@ -48,7 +57,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 - [Google Play Games on PC Developer Emulator](https://developer.android.com/games/playgames/emulator) (GPGPCDE)
 - [Aow Tools](https://apps.microsoft.com/detail/9nxm6552h2ql?hl=en-US) (Free Trial)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
+- [HxD Portable](https://mh-nexus.de/en/downloads.php?product=HxD20)
 - [Magisk](https://github.com/topjohnwu/Magisk?tab=readme-ov-file)
 - [7-Zip](https://7-zip.org/)
 
@@ -100,28 +109,71 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 3. Create a new folder "**GPGPCDE**".
 
 ㅤ
-### 6. Root with `hpesuperpower`
+### 6. Copy/backup `aggregate.img` & `bios.rom`
 
-1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Exit`.
-2. Download & extract **hpesuperpower** to `%UserProfile%\Desktop\GPGPCDE` folder.
-3. Move the `Magisk-vXX.X.apk` file to `%UserProfile%\Desktop\GPGPCDE` folder.
-4. Open **CMD** as administrator
-5. Navigate to the **GPGPCDE** folder, type `cd /d %UserProfile%\Desktop\GPGPCDE` > **Enter**
-6. Root **GPGPCDE** with the command `hpesuperpower.exe --dev magisk <magisk_apk_file>` > **Enter**
-
-    - e.g.: `hpesuperpower.exe --dev magisk Magisk-v30.7.apk`
-    - More about **hpesuperpower** Command Line , [read here](https://github.com/chsbuffer/hpesuperpower/releases/tag/1.1.0).
-
-      ![GPGPCDE-cmd-1](./images/GPGPCDE-cmd-1.png)
-7. Wait until the root process is complete.
-
-    ![GPGPCDE-cmd-2](./images/GPGPCDE-cmd-2.png)
-8. Reopen **GPGPCDE**.
-9. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
-10. Wait until **GPGPCDE** finishes rebooting.
+1. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
+2. Copy/backup the `aggregate.img` & `bios.rom` file to `%UserProfile%\Desktop\GPGPCDE` folder.
+3. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
 
 ㅤ
-### 7. Enable `Apps` on **Play Store** (optional)
+### 7. Patch `1.boot_a.img`
+
+1. Open **Aow Tools** > `File` > `Download` folder > click `↑ Upload` (bottom navigation bar).
+2. Upload the `1.boot_a.img` file.
+3. Open **GPGPCDE** > open **Magisk**.
+4. Click the `Install` button in the **Magisk card**
+5. Choose `Select and Patch a File` in method, double click the `1.boot_a.img` file.
+6. Click `LET'S GO` and wait for the `All done!` message.
+7. Go back to **Aow Tools** > `File` > `Download` folder
+8. Select the `magisk_patched-xxxxx_xxxxx.img` file and click `↓ Download`
+9. Save to `%UserProfile%\Desktop\GPGPCDE`
+
+ㅤ
+### 8. Edit `magisk_patched-xxxxx_xxxxx.img`
+
+1. Download & extract **HxD Portable**.
+2. Open the `magisk_patched-xxxxx_xxxxx.img` file with **HxD**.
+3. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+    - **Search for**: `,avb=vbmeta`
+    - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `11`
+    - **Search direction**: `All`
+    - Select `Prompt on replace` (optional)
+    - Click `OK`
+
+      ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-replace.png)
+
+      ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-before-after.png)
+4. Select **all** the hex bytes of the file (<kbd>Ctrl</kbd>+<kbd>a</kbd>), then right-click and select `Select block...` (<kbd>Ctrl</kbd>+<kbd>e</kbd>).
+5. Check the `Length` section and copy the value.
+
+    ![GPGPCDE-edit-magisk-patched-select](./images/GPGPCDE-edit-magisk-patched-select.png)
+
+ㅤ
+### 9. Add patched boot image to `aggregate.img`
+
+1. Open the `aggregate.img` file with **HxD**.
+2. Open search box (<kbd>Ctrl</kbd>+<kbd>f</kbd>) > `Text-string` section :
+    - **Search for**: `ANDROID!`
+    - **Search direction**: `All`
+    - Click `Search all`
+
+      ![GPGPCDE-add-patched-boot-image-search](./images/GPGPCDE-add-patched-boot-image-search.png)
+3. In the `Result` section > `Search ({N} hits)` > double click the last match.
+
+    ![GPGPCDE-add-patched-boot-image-search-result](./images/GPGPCDE-add-patched-boot-image-search-result.png)
+4. Right-click on the selected text, then select `Select block...` :
+    - Check the `Length` section and fill it with the **length** of file `magisk_patched-xxxxx_xxxxx.img` ([#8-5](#8-edit-magisk_patched-xxxxx_xxxxximg)).
+    - Click `OK`
+
+      ![GPGPCDE-add-patched-boot-image-select](./images/GPGPCDE-add-patched-boot-image-select.png)
+5. Go back to `magisk_patched-xxxxx_xxxxx.img` file, then copy all the hex bytes of the file ([#8-4](#8-edit-magisk_patched-xxxxx_xxxxximg)).
+6. Replace the **selected text** in the `aggregate.img` file with the copied bytes.
+
+    ![GPGPCDE-add-patched-boot-image-before-after](./images/GPGPCDE-add-patched-boot-image-before-after.png)
+7. **Save**.
+
+ㅤ
+### 10. Enable `Apps` on **Play Store** (optional)
 
 > [!CAUTION]  
 > This method removes the [com.google.android.play.feature.HPE_EXPERIENCE](https://developer.android.com/games/playgames/pc-compatibility#detect-hpe) feature, causing the Play Store to recognize GPGPCDE as a regular Android mobile device.
@@ -135,20 +187,61 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 <br/>
 
-1. Download Magisk Module [`GPGPCDE_Disable_HPE.zip`](https://github.com/sekedus/MagiskOnGPGPCDE/raw/refs/heads/main/module/GPGPCDE_Disable_HPE.zip)
-2. Open **Aow Tools** > `File` > `Download` folder > `↑ Upload` (bottom navigation bar).
-3. Upload the `GPGPCDE_Disable_HPE.zip` file.
-4. Open **GPGPCDE** > open **Magisk**.
-5. Click the `Modules` menu in the bottom-right corner.
-6. Click the `Install from storage` button.
-7. Navigate to `Downloads` folder, double click the `GPGPCDE_Disable_HPE.zip` file.
-8. You will be prompted with `Install Confirmation` > `OK`.
-9. Wait for the `Done` message.
-10. Click the `Reboot` button, wait until **GPGPCDE** finishes rebooting.
-11. Google Play Store **tweaks**:
+1. Open the `aggregate.img` file with **HxD**.
+2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+
+    - **Search for**: `<feature name="com.google.android.play.feature.HPE_EXPERIENCE" />`
+    - **Replace with**: "&#60;!--&#160;&#160;&#160;&#160;&#160;&#160;com.google.android.play.feature.HPE_EXPERIENCE&#160;&#160;&#160;&#160;&#160;&#160;--&#62;" (without quotation marks) `65`
+    - **Search direction**: `All`
+    - Click `OK`
+
+      ![GPGPCDE-enable-apps-on-playstore](./images/GPGPCDE-enable-apps-on-playstore.png)
+
+      ![GPGPCDE-enable-apps-on-playstore-before-after](./images/GPGPCDE-enable-apps-on-playstore-before-after.png)
+3. **Save**.
+4. Google Play Store tweaks:
     - **Stop auto update** Play Store: [read here](https://support.google.com/googleplay/thread/248186520?hl=en&msgid=248188080)
     - Turn off **Google Play Protect**: [read here](https://support.google.com/googleplay/answer/2812853?hl=en#:~:text=How%20to%20turn%20Google%20Play%20Protect%20on%20or%20off)
     - Turn off **app install optimization**: [read here](https://support.google.com/googleplay/answer/10122796?hl=en#:~:text=Turn%20app%20install%20optimization%20on%20or%20off)
+
+ㅤ
+### 11. Edit `bios.rom`
+
+1. Open the `bios.rom` file with **HxD**.
+2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+
+    - **Search for**: `verified_`
+    - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `9`
+    - **Search direction**: `All`
+    - Click `OK`
+
+      ![GPGPCDE-edit-bios.rom-replace](./images/GPGPCDE-edit-bios.rom-replace.png)
+
+      ![GPGPCDE-edit-bios.rom-before-after](./images/GPGPCDE-edit-bios.rom-before-after.png)
+3. **Save**.
+
+ㅤ
+### 12. Replace with patched files
+
+1. In the **taskbar notification area** or **system tray icon**, right-click **GPGPCDE** icon and click `Exit`.
+2. Copy & paste patched files (`aggregate.img` & `bios.rom`) to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`.
+3. Reopen **GPGPCDE**.
+4. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
+5. Wait until **GPGPCDE** finishes rebooting.
+
+ㅤ
+### 13. Remove install restriction
+
+1. Download Magisk Module [`HPESuperpower.zip`](https://github.com/sekedus/MagiskOnGPGPCDE/raw/refs/heads/main/module/HPESuperpower.zip) by [ChsBuffer](https://github.com/chsbuffer)
+2. Open **Aow Tools** > `File` > `Download` folder > `↑ Upload` (bottom navigation bar).
+3. Upload the `HPESuperpower.zip` file.
+4. Open **GPGPCDE** > open **Magisk**.
+5. Click the `Modules` menu in the bottom-right corner.
+6. Click the `Install from storage` button.
+7. Navigate to `Downloads` folder, double click the `HPESuperpower.zip` file.
+8. You will be prompted with `Install Confirmation` > `OK`.
+9. Wait for the `Done` message.
+10. Click the `Reboot` button, wait until **GPGPCDE** finishes rebooting.
 
 ㅤ
 ## Install apps
@@ -156,7 +249,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 ### AdAway
 
 1. Open **Magisk** > `⚙` Settings (top right corner) > `Magisk` section > click `Systemless hosts`.
-2. Close & exit **GPGPCDE** ([#6-1](#6-root-with-hpesuperpower)).
+2. Close & exit **GPGPCDE** ([#12-1](#12-replace-with-patched-files)).
 3. Reopen **GPGPCDE**.
 4. Download and install [AdAway](https://github.com/AdAway/AdAway?tab=readme-ov-file) with **Aow Tools**.
 5. Open **AdAway** > select `Root based ad blocking` > grant **root access** > `NEXT`.
@@ -185,6 +278,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 - [Advanced Root Checker](https://play.google.com/store/apps/details?id=com.anu.developers3k.rootchecker)
 - [Lawnchair](https://github.com/LawnchairLauncher/lawnchair?tab=readme-ov-file)
+- [Device Info HW](https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw)
 - [Shortcut Maker](https://play.google.com/store/apps/details?id=rk.android.app.shortcutmaker)
 - [Soft Keys 2](https://github.com/dogusumit/SoftKeys2-HomeBackButton?tab=readme-ov-file) or [Back Button](https://play.google.com/store/apps/details?id=mavie.shadowsong.bb)
 - [KillApps](https://play.google.com/store/apps/details?id=com.tafayor.killall)
@@ -212,7 +306,7 @@ Read the current [release notes](https://support.google.com/googleplay?p=games_p
 2. Click the `Check for update` button, if an update is available a `Download` button will appear.
 3. Click `Download` and wait for update to complete and `Relaunch` button to appear.
 4. Click `Relaunch`, if **GPGPCDE** is not running, launch it manually.
-5. Re-root **GPGPCDE**, starting from step [#6](#6-root-with-hpesuperpower).
+5. Re-root **GPGPCDE**, starting from step [#6](#6-copybackup-aggregateimg--biosrom) through [#13](#13-remove-install-restriction).
 6. Open **GPGPCDE** > Open **Magisk**, validate root has been successful.
 7. Close & exit **GPGPCDE**
 8. Reopen **GPGPCDE**.
@@ -231,10 +325,18 @@ GPGPCDE keyboard shortcuts:
 Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are provided for development purposes only. Don't rely on them in your shipping game.
 
 
-### [Method: 1](../README.md)
+### [Screenshot](./screenshot/README.md)
+
+
+### [Method: 2](./2/README.md)
 
 ㅤ
 ## Credits
 
-- [GPGPC Community](https://discord.gg/UYPSypWA8M)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
+- [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596)
+- [XDA Forums t-4486817#post-90018526](https://xdaforums.com/t/4486817/post-90018526)
+- [ChsBuffer](https://github.com/chsbuffer)
+- [XDA Forums t-4656397](https://xdaforums.com/t/4656397/)
+- [XDA Sideloading apps on GPGPCDE](https://www.xda-developers.com/sideload-apps-on-google-play-games-emulator/)
+- [kilObit 7496373535076556798](https://kil0bit.blogspot.com/2023/11/google-launched-official-android.html)
+- [Phandroid p-339416](https://phandroid.com/?p=339416)
