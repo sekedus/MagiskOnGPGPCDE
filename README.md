@@ -1,6 +1,8 @@
 # Magisk on GPGPC Developer Emulator
 
-Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
+[![Magisk Version](https://img.shields.io/badge/Magisk-v30.7-00AF9C.svg?logo=Magisk)](#installation) [![Google Play Games on PC (Dev) Version](https://img.shields.io/badge/Google%20Play%20Games%20on%20PC%20(Dev)-26.2.961.1-1A8039.svg?logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdmlld0JveD0iMCAwIDQ3OC42MzMgNTM0LjQ3OCI+PHBhdGggZmlsbD0iIzFBODAzOSIgZD0iTTAgNDc1LjIyVjU5LjIyOUMwIDEzLjcyNyA0OS4yODUtMTQuNzc2IDg4Ljc3NCA4LjAyN2wzNjAuMjggMjA3Ljk2OWMzOS40MzggMjIuODAzIDM5LjQzOCA3OS43MDUgMCAxMDIuNDU2TDg4Ljc3NCA1MjYuNDczQzQ5LjMzNiA1NDkuMjI0IDAgNTIwLjc3MyAwIDQ3NS4yMnoiLz48cGF0aCBmaWxsPSIjOTRGRUQ2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNTcuOTggMjM2LjIwOGMtNy45ODEtNDYuNDg2LTQ4LjMtODAuMjc1LTk1LjQ2LTgwLjI3NUgwdjIyMi41ODRoMTE1LjU2N2w4NC4wMDcgODQuMDA3IDg5LjAzNC01MS40MDktMzAuNjI4LTE3NC45MDd6bS0xNDIuNjItNTAuMTY2YzE1LjM0IDAgMjcuODI5IDEyLjQ5IDI3LjgyOSAyNy45ODUgMCAxNS4zNC0xMi40OSAyNy44MjktMjcuODI5IDI3LjgyOS0xNS40OTUgMC0yNy45ODUtMTIuNDktMjcuOTg1LTI3LjgyOSAwLTE1LjQ5NSAxMi40OS0yNy45ODUgMjcuOTg1LTI3Ljk4NXpNNjIuMDg1IDI5NS4xODNjLTE1LjM0IDAtMjcuODI5LTEyLjQ5LTI3LjgyOS0yNy45ODUgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuODI5LTI3LjgyOSAxNS40OTUgMCAyNy45ODUgMTIuNDkgMjcuOTg1IDI3LjgyOSAwIDE1LjQ5Ni0xMi40OSAyNy45ODUtMjcuOTg1IDI3Ljk4NXptNTMuMjc1IDUzLjEyYy0xNS40OTUgMC0yNy45ODUtMTIuMzM0LTI3Ljk4NS0yNy44MjkgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuOTg1LTI3LjgyOSAxNS4zNCAwIDI3LjgyOSAxMi40OSAyNy44MjkgMjcuODI5LjAwMSAxNS40OTUtMTIuNDg5IDI3LjgyOS0yNy44MjkgMjcuODI5em01My44NDUtNTMuMTJjLTE1LjQ5NSAwLTI3Ljk4NS0xMi40OS0yNy45ODUtMjcuOTg1IDAtMTUuMzQgMTIuNDktMjcuODI5IDI3Ljk4NS0yNy44MjkgMTUuMzQgMCAyNy44MjkgMTIuNDkgMjcuODI5IDI3LjgyOS0uMDUxIDE1LjQ5Ni0xMi41NDEgMjcuOTg1LTI3LjgyOSAyNy45ODV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=)](#installation)
+
+Root & Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 
 > This repository was created based on a comment in the [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596).
 
@@ -278,7 +280,7 @@ Install Magisk on GPGPCDE (Google Play Games on PC Developer Emulator).
 - [Lawnchair](https://github.com/LawnchairLauncher/lawnchair?tab=readme-ov-file)
 - [Device Info HW](https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw)
 - [Shortcut Maker](https://play.google.com/store/apps/details?id=rk.android.app.shortcutmaker)
-- [Soft Keys 2](https://github.com/dogusumit/SoftKeys2-HomeBackButton?tab=readme-ov-file) or [Back Button](https://play.google.com/store/apps/details?id=mavie.shadowsong.bb)
+- [Soft Keys 2](https://github.com/dogusumit/SoftKeys2-HomeBackButton?tab=readme-ov-file) or [Back Button](https://apkcombo.com/back-button/mavie.shadowsong.bb/)
 - [KillApps](https://play.google.com/store/apps/details?id=com.tafayor.killall)
 - [ZArchiver](https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver)
 - [Amaze File Manager](https://github.com/TeamAmaze/AmazeFileManager?tab=readme-ov-file)
@@ -312,7 +314,7 @@ Read the current [release notes](https://support.google.com/googleplay?p=games_p
 
 ### GPGPCDE: Navigation
 
-GPGPCDE keyboard shortcuts:
+GPGPCDE [keyboard shortcuts](https://developer.android.com/games/playgames/pg-emulator#navigation):
 - <kbd>Ctrl</kbd> + <kbd>h</kbd>: press the home button
 - <kbd>Ctrl</kbd> + <kbd>b</kbd> or <kbd>Esc</kbd>: press the back button
 - <kbd>Ctrl</kbd> + <kbd>a</kbd>: open app drawer (home screen)
@@ -327,6 +329,27 @@ Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are prov
 
 
 ### [Method: 2](./2/README.md)
+
+
+<!-- ### Method: 3
+
+Root Google Play Games on PC Developer Emulator (GPGPCDE) with ROYALE STORE TOOLS
+
+> [!CAUTION]  
+> !! USE AT YOUR OWN RISK !!
+
+Source:
+
+- Video: https://youtu.be/YUXq2OgO0eI
+- Discord: https://discord.gg/6emajydeuX
+
+**Download**: [Royale Store Tools v1.1](https://www.mediafire.com/file/akp1jil48mtb0zd/RoyaleStoreTools_Setup_v1.1.exe/file)
+
+Virus scan results:
+
+- [VirusTotal](https://www.virustotal.com/gui/file/eed75b14fea0f418a73b22b8abaffba9f2479f621807b782d832615aaa7137f1)
+- [Filescan](https://www.filescan.io/uploads/69cbe09de2df9aa488c00f58/reports/a3600cc6-5821-44bd-8bce-b5f757cff9d6/details)
+- [VirScan](https://www.virscan.org/report/eed75b14fea0f418a73b22b8abaffba9f2479f621807b782d832615aaa7137f1) -->
 
 ㅤ
 ## Credits
