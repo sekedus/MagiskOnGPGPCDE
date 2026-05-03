@@ -35,7 +35,9 @@ Root & customize Google Play Games on PC Developer Emulator (GPGPCDE).
 
 ### [Method: 2](./2/README.md)
 
-<!-- ### Method: 3
+### [Method: 3](./3/README.md)
+
+<!-- ### Method: 4
 
 Root Google Play Games on PC Developer Emulator (GPGPCDE) with ROYALE STORE TOOLS
 

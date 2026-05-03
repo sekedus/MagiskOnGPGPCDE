@@ -36,6 +36,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
   - [GPGPCDE: Release Notes](#gpgpcde-release-notes)
   - [GPGPCDE: Navigation](#gpgpcde-navigation)
   - [Method: 2](#method-2)
+  - [Method: 3](#method-3)
 - [Credits](#credits)
 - [Disclaimer](#disclaimer)
 
@@ -369,6 +370,9 @@ Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are prov
 
 
 ### [Method: 2](../2/README.md)
+
+
+### [Method: 3](../3/README.md)
 
 <br/>
 

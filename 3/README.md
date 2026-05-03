@@ -1,4 +1,4 @@
-# Magisk on GPGPCDE: Method 2
+# Magisk on GPGPCDE: Method 3
 
 <picture>![Badge Magisk]</picture>
 <picture>![Badge GPGPC Dev]</picture>
@@ -17,7 +17,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
   - [4. Magisk](#4-magisk)
 - [Patch](#patch)
   - [1. Create Folder](#1-create-folder)  
-  - [2. Root with `hpesuperpower`](#2-root-with-hpesuperpower)
+  - [2. Root with `GPGPC Patcher`](#2-root-with-gpgpc-patcher)
   - [3. Enable `Apps` on **Play Store** (optional)](#3-enable-apps-on-play-store-optional)
 - [Install apps](#install-apps)
   - [AdAway](#adaway)
@@ -28,7 +28,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
   - [GPGPCDE: Release Notes](#gpgpcde-release-notes)
   - [GPGPCDE: Navigation](#gpgpcde-navigation)
   - [Method: 1](#method-1)
-  - [Method: 3](#method-3)
+  - [Method: 2](#method-2)
 - [Credits](#credits)
 - [Disclaimer](#disclaimer)
 
@@ -59,8 +59,8 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 - [Google Play Games on PC Developer Emulator](https://developer.android.com/games/playgames/emulator) (GPGPCDE)
 - [Aow Tools](https://apps.microsoft.com/detail/9nxm6552h2ql?hl=en-US) (Free Trial)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
-- [Magisk v28.1](https://github.com/topjohnwu/Magisk/releases/tag/v28.1)
+- [GPGPC Patcher](https://github.com/sekedus/GPGPCPatcher?tab=readme-ov-file)
+- [Magisk](https://github.com/topjohnwu/Magisk?tab=readme-ov-file)
 
 <br/>
 
@@ -103,7 +103,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 ### 4. Magisk
 
-1. Download **Magisk v28.1**.
+1. Download the **Magisk** app.
 2. Open **Aow Tools** > `Install` > You can drag and drop APK files to install Android apps.
 3. Install **Magisk**.
 4. Open **GPGPCDE**, You will see **Magisk** installed in the app drawer.
@@ -120,27 +120,30 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 <br/>
 
-### 2. Root with `hpesuperpower`
+### 2. Root with `GPGPC Patcher`
 
 1. [Completely exit][exit-gpgpc] **GPGPCDE** if it is running.
-2. Download & extract **hpesuperpower** to `%UserProfile%\Desktop\GPGPCDE` folder.
-3. Move the `Magisk-vXX.X.apk` file to `%UserProfile%\Desktop\GPGPCDE` folder.
-4. Open **CMD** as administrator
-5. Navigate to the **GPGPCDE** folder, type `cd /d %UserProfile%\Desktop\GPGPCDE` > <kbd>Enter</kbd>
-6. Root **GPGPCDE** with the command `hpesuperpower.exe --dev magisk <magisk_apk_file>` > <kbd>Enter</kbd>
+2. Download & extract <ins>GPGPC-Patcher</ins> to `%UserProfile%\Desktop\GPGPCDE` folder.
+3. Ensure [all requirements](https://github.com/sekedus/GPGPCPatcher?tab=readme-ov-file#preparation) for <ins>GPGPC-Patcher</ins> have been met.  
+
+   Beginner guide: [read here](https://www.google.com/search?udm=50&hl=en&q=beginner+guide%2C+step+by+step+to%3A%0A-+install+wsl2+%28ubuntu%29%0A-+setup+user+account+and+check+sudo%0A-+verify+installation+and+distributions%0A-+update+packages%0A-+install+packages%3A+bc+unzip+android-sdk-libsparse-utils+e2fsprogs%0A-+troubleshooting).
+
+   (Optional) Temporarily disable sudo password prompt in WSL2: [read here](../TROUBLESHOOTING.md#temporarily-disable-sudo-password-prompt-wsl2)
+4. Open **PowerShell** as administrator
+5. Navigate to the **GPGPCDE** folder, type `cd "$env:UserProfile\Desktop\GPGPCDE"` > <kbd>Enter</kbd>
+6. Root **GPGPCDE** with the command `.\GPGPC-patcher.ps1 -Dev -MagiskApk <magisk.apk>` > <kbd>Enter</kbd>
 
    For example:
-   ```shell
-   hpesuperpower.exe --dev magisk Magisk-v28.1.apk
+   ```powershell
+   .\GPGPC-patcher.ps1 -Dev -MagiskApk "resources\Magisk_30.7.apk"
    ```
-   More about **hpesuperpower** Command Line , [read here](https://github.com/chsbuffer/hpesuperpower/releases/tag/1.1.0).
 
    <br/>
 
-   ![GPGPCDE-cmd-1](./images/GPGPCDE-cmd-1.png)
+   ![GPGPCDE-powershell-1](./images/GPGPCDE-powershell-1.png)
 7. Wait until the root process is complete.
 
-    ![GPGPCDE-cmd-2](./images/GPGPCDE-cmd-2.png)
+    ![GPGPCDE-powershell-2](./images/GPGPCDE-powershell-2.png)
 8. Open **GPGPCDE**.
 9. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
 10. Wait until **GPGPCDE** finishes rebooting.
@@ -275,14 +278,13 @@ Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are prov
 ### [Method: 1](../1/README.md)
 
 
-### [Method: 3](../3/README.md)
+### [Method: 2](../2/README.md)
 
 <br/>
 
 ## Credits
 
-- [GPGPC Community](https://discord.gg/UYPSypWA8M)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
+- [GPGPC Patcher](https://github.com/sekedus/GPGPCPatcher?tab=readme-ov-file)
 
 <br/>
 
@@ -301,5 +303,5 @@ The authors and contributors are **not responsible for any damage, data loss, or
 
 <!-- Badges -->
 
-[Badge Magisk]: https://img.shields.io/badge/Magisk-v28.1-00AF9C.svg?logo=Magisk
+[Badge Magisk]: https://img.shields.io/badge/Magisk-v30.7-00AF9C.svg?logo=Magisk
 [Badge GPGPC Dev]: https://img.shields.io/badge/Google%20Play%20Games%20on%20PC%20(Dev)-26.4.112.1-1A8039.svg?logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdmlld0JveD0iMCAwIDQ3OC42MzMgNTM0LjQ3OCI+PHBhdGggZmlsbD0iIzFBODAzOSIgZD0iTTAgNDc1LjIyVjU5LjIyOUMwIDEzLjcyNyA0OS4yODUtMTQuNzc2IDg4Ljc3NCA4LjAyN2wzNjAuMjggMjA3Ljk2OWMzOS40MzggMjIuODAzIDM5LjQzOCA3OS43MDUgMCAxMDIuNDU2TDg4Ljc3NCA1MjYuNDczQzQ5LjMzNiA1NDkuMjI0IDAgNTIwLjc3MyAwIDQ3NS4yMnoiLz48cGF0aCBmaWxsPSIjOTRGRUQ2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNTcuOTggMjM2LjIwOGMtNy45ODEtNDYuNDg2LTQ4LjMtODAuMjc1LTk1LjQ2LTgwLjI3NUgwdjIyMi41ODRoMTE1LjU2N2w4NC4wMDcgODQuMDA3IDg5LjAzNC01MS40MDktMzAuNjI4LTE3NC45MDd6bS0xNDIuNjItNTAuMTY2YzE1LjM0IDAgMjcuODI5IDEyLjQ5IDI3LjgyOSAyNy45ODUgMCAxNS4zNC0xMi40OSAyNy44MjktMjcuODI5IDI3LjgyOS0xNS40OTUgMC0yNy45ODUtMTIuNDktMjcuOTg1LTI3LjgyOSAwLTE1LjQ5NSAxMi40OS0yNy45ODUgMjcuOTg1LTI3Ljk4NXpNNjIuMDg1IDI5NS4xODNjLTE1LjM0IDAtMjcuODI5LTEyLjQ5LTI3LjgyOS0yNy45ODUgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuODI5LTI3LjgyOSAxNS40OTUgMCAyNy45ODUgMTIuNDkgMjcuOTg1IDI3LjgyOSAwIDE1LjQ5Ni0xMi40OSAyNy45ODUtMjcuOTg1IDI3Ljk4NXptNTMuMjc1IDUzLjEyYy0xNS40OTUgMC0yNy45ODUtMTIuMzM0LTI3Ljk4NS0yNy44MjkgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuOTg1LTI3LjgyOSAxNS4zNCAwIDI3LjgyOSAxMi40OSAyNy44MjkgMjcuODI5LjAwMSAxNS40OTUtMTIuNDg5IDI3LjgyOS0yNy44MjkgMjcuODI5em01My44NDUtNTMuMTJjLTE1LjQ5NSAwLTI3Ljk4NS0xMi40OS0yNy45ODUtMjcuOTg1IDAtMTUuMzQgMTIuNDktMjcuODI5IDI3Ljk4NS0yNy44MjkgMTUuMzQgMCAyNy44MjkgMTIuNDkgMjcuODI5IDI3LjgyOS0uMDUxIDE1LjQ5Ni0xMi41NDEgMjcuOTg1LTI3LjgyOSAyNy45ODV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=
