@@ -1,7 +1,7 @@
 # Screenshot
 
 Tested on: 
-- Google Play Games on PC Developer Emulator (GPGPCDE): [26.2.961.1](https://github.com/sekedus/omaha/blob/c7c6f7d684c38ec0a07abe1b90cdd9c0847d1f8c/data.json#L333) (Stable)
+- Google Play Games on PC Developer Emulator (GPGPCDE): [26.4.112.1](https://github.com/sekedus/omaha/blob/c7c6f7d684c38ec0a07abe1b90cdd9c0847d1f8c/data.json#L333) (Stable)
 - Magisk: [30.7](https://github.com/topjohnwu/Magisk/releases/tag/v30.7)
 
 ㅤ

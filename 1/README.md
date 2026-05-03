@@ -1,9 +1,11 @@
-# Magisk on GPGPCDE: Method 2
+# Magisk on GPGPCDE: Method 1
 
 <picture>![Badge Magisk]</picture>
 <picture>![Badge GPGPC Dev]</picture>
 
 Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
+
+> This guide was created based on a comment in the [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596).
 
 <br/>
 
@@ -16,9 +18,15 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
   - [3. Aow Tools](#3-aow-tools)
   - [4. Magisk](#4-magisk)
 - [Patch](#patch)
-  - [1. Create Folder](#1-create-folder)  
-  - [2. Root with `hpesuperpower`](#2-root-with-hpesuperpower)
-  - [3. Enable `Apps` on **Play Store** (optional)](#3-enable-apps-on-play-store-optional)
+  - [1. Create folder](#1-create-folder)
+  - [2. Copy/backup `aggregate.img` & `bios.rom`](#2-copybackup-aggregateimg--biosrom)
+  - [3. Patch `1.boot_a.img`](#3-patch-1boot_aimg)
+  - [4. Edit `magisk_patched-xxxxx_xxxxx.img`](#4-edit-magisk_patched-xxxxx_xxxxximg)
+  - [5. Add patched boot image to `aggregate.img`](#5-add-patched-boot-image-to-aggregateimg)
+  - [6. Edit `bios.rom`](#6-edit-biosrom)
+  - [7. Replace with patched files](#7-replace-with-patched-files)
+  - [8. Remove install restriction](#8-remove-install-restriction)
+  - [9. Enable `Apps` on **Play Store** (optional)](#9-enable-apps-on-play-store-optional)
 - [Install apps](#install-apps)
   - [AdAway](#adaway)
   - [Aurora Store](#aurora-store)
@@ -27,7 +35,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 - [Others](#others)
   - [GPGPCDE: Release Notes](#gpgpcde-release-notes)
   - [GPGPCDE: Navigation](#gpgpcde-navigation)
-  - [Method: 1](#method-1)
+  - [Method: 2](#method-2)
 - [Credits](#credits)
 - [Disclaimer](#disclaimer)
 
@@ -58,8 +66,9 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 - [Google Play Games on PC Developer Emulator](https://developer.android.com/games/playgames/emulator) (GPGPCDE)
 - [Aow Tools](https://apps.microsoft.com/detail/9nxm6552h2ql?hl=en-US) (Free Trial)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
-- [Magisk v28.1](https://github.com/topjohnwu/Magisk/releases/tag/v28.1)
+- [HxD Portable](https://mh-nexus.de/en/downloads.php?product=HxD20)
+- [Magisk](https://github.com/topjohnwu/Magisk?tab=readme-ov-file)
+- [7-Zip](https://7-zip.org/)
 
 <br/>
 
@@ -102,7 +111,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 ### 4. Magisk
 
-1. Download **Magisk v28.1**.
+1. Download the **Magisk** app.
 2. Open **Aow Tools** > `Install` > You can drag and drop APK files to install Android apps.
 3. Install **Magisk**.
 4. Open **GPGPCDE**, You will see **Magisk** installed in the app drawer.
@@ -119,35 +128,123 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
 
 <br/>
 
-### 2. Root with `hpesuperpower`
+### 2. Copy/backup `aggregate.img` & `bios.rom`
 
-1. [Completely exit][exit-gpgpc] **GPGPCDE** if it is running.
-2. Download & extract **hpesuperpower** to `%UserProfile%\Desktop\GPGPCDE` folder.
-3. Move the `Magisk-vXX.X.apk` file to `%UserProfile%\Desktop\GPGPCDE` folder.
-4. Open **CMD** as administrator
-5. Navigate to the **GPGPCDE** folder, type `cd /d %UserProfile%\Desktop\GPGPCDE` > <kbd>Enter</kbd>
-6. Root **GPGPCDE** with the command `hpesuperpower.exe --dev magisk <magisk_apk_file>` > <kbd>Enter</kbd>
-
-   For example:
-   ```shell
-   hpesuperpower.exe --dev magisk Magisk-v28.1.apk
-   ```
-   More about **hpesuperpower** Command Line , [read here](https://github.com/chsbuffer/hpesuperpower/releases/tag/1.1.0).
-
-   <br/>
-
-   ![GPGPCDE-cmd-1](./images/GPGPCDE-cmd-1.png)
-7. Wait until the root process is complete.
-
-    ![GPGPCDE-cmd-2](./images/GPGPCDE-cmd-2.png)
-8. Open **GPGPCDE**.
-9. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
-10. Wait until **GPGPCDE** finishes rebooting.
-11. Reopen **GPGPCDE**.
+1. Go to `C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd`
+2. Copy/backup the `aggregate.img` & `bios.rom` file to `%UserProfile%\Desktop\GPGPCDE` folder.
+3. Open the `aggregate.img` file with **7-Zip** and extract the `1.boot_a.img` file.
 
 <br/>
 
-### 3. Enable `Apps` on **Play Store** (optional)
+### 3. Patch `1.boot_a.img`
+
+1. Open **Aow Tools** > `File` > `Download` folder > click `↑ Upload` (bottom navigation bar).
+2. Upload the `1.boot_a.img` file.
+3. Open **GPGPCDE** > open **Magisk**.
+4. Click the `Install` button in the **Magisk card**
+5. Choose `Select and Patch a File` in method, double click the `1.boot_a.img` file.
+6. Click `LET'S GO` and wait for the `All done!` message.
+7. Go back to **Aow Tools** > `File` > `Download` folder
+8. Select the `magisk_patched-xxxxx_xxxxx.img` file and click `↓ Download`
+9. Save to `%UserProfile%\Desktop\GPGPCDE`
+
+<br/>
+
+### 4. Edit `magisk_patched-xxxxx_xxxxx.img`
+
+1. Download & extract **HxD Portable**.
+2. Open the `magisk_patched-xxxxx_xxxxx.img` file with **HxD**.
+3. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+    - **Search for**: `,avb=vbmeta`
+    - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `11`
+    - **Search direction**: `All`
+    - Select `Prompt on replace` (optional)
+    - Click `OK`
+
+      ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-replace.png)
+
+      ![GPGPCDE-edit-magisk-patched-replace](./images/GPGPCDE-edit-magisk-patched-before-after.png)
+4. Select **all** the hex bytes of the file (<kbd>Ctrl</kbd>+<kbd>a</kbd>), then right-click and select `Select block...` (<kbd>Ctrl</kbd>+<kbd>e</kbd>).
+5. Check the `Length` section and copy the value.
+
+    ![GPGPCDE-edit-magisk-patched-select](./images/GPGPCDE-edit-magisk-patched-select.png)
+
+<br/>
+
+### 5. Add patched boot image to `aggregate.img`
+
+1. Open the `aggregate.img` file with **HxD**.
+2. Open search box (<kbd>Ctrl</kbd>+<kbd>f</kbd>) > `Text-string` section :
+    - **Search for**: `ANDROID!`
+    - **Search direction**: `All`
+    - Click `Search all`
+
+      ![GPGPCDE-add-patched-boot-image-search](./images/GPGPCDE-add-patched-boot-image-search.png)
+3. In the `Result` section > `Search ({N} hits)` > double click the last match.
+
+    ![GPGPCDE-add-patched-boot-image-search-result](./images/GPGPCDE-add-patched-boot-image-search-result.png)
+4. Right-click on the selected text, then select `Select block...` :
+    - Check the `Length` section and fill it with the **length** of file `magisk_patched-xxxxx_xxxxx.img` (**Patch** [#4-5](#4-edit-magisk_patched-xxxxx_xxxxximg)).
+    - Click `OK`
+
+      ![GPGPCDE-add-patched-boot-image-select](./images/GPGPCDE-add-patched-boot-image-select.png)
+5. Go back to `magisk_patched-xxxxx_xxxxx.img` file, then copy all the hex bytes of the file (**Patch** [#4-4](#4-edit-magisk_patched-xxxxx_xxxxximg)).
+6. Replace the **selected text** in the `aggregate.img` file with the copied bytes.
+
+    ![GPGPCDE-add-patched-boot-image-before-after](./images/GPGPCDE-add-patched-boot-image-before-after.png)
+7. **Save**.
+
+<br/>
+
+### 6. Edit `bios.rom`
+
+1. Open the `bios.rom` file with **HxD**.
+2. Open replace box (<kbd>Ctrl</kbd>+<kbd>r</kbd>) > `Text-string` section :
+
+    - **Search for**: `verified_`
+    - **Replace with**: "&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" (without quotation marks) `9`
+    - **Search direction**: `All`
+    - Click `OK`
+
+      ![GPGPCDE-edit-bios.rom-replace](./images/GPGPCDE-edit-bios.rom-replace.png)
+
+      ![GPGPCDE-edit-bios.rom-before-after](./images/GPGPCDE-edit-bios.rom-before-after.png)
+3. **Save**.
+
+<br/>
+
+### 7. Replace with patched files
+
+1. [Completely exit][exit-gpgpc] **GPGPCDE** if it is running.
+2. Copy & paste patched files (`aggregate.img` & `bios.rom`) to:  
+   ```
+   C:\Program Files\Google\Play Games Developer Emulator\current\emulator\avd
+   ```
+3. Open **GPGPCDE**.
+4. Open **Magisk** > You will be prompted with `Requires Additional Setup` > `OK`.
+5. Wait until **GPGPCDE** finishes rebooting.
+6. Reopen **GPGPCDE**.
+
+<br/>
+
+### 8. Remove install restriction
+
+1. Download Magisk Module [`GPGPCDE_Disable_Restrictions.zip`](../module/GPGPCDE_Disable_Restrictions.zip)
+2. Open **Aow Tools** > `File` > `Download` folder > `↑ Upload` (bottom navigation bar).
+3. Upload the `GPGPCDE_Disable_Restrictions.zip` file.
+4. Open **GPGPCDE** > open **Magisk**.
+5. Click the `Modules` menu in the bottom-right corner.
+6. Click the `Install from storage` button.
+7. Navigate to `Downloads` folder, double click the `GPGPCDE_Disable_Restrictions.zip` file.
+8. You will be prompted with `Install Confirmation` > `OK`.
+9. Wait for the `Done` message.
+10. Click the `Reboot` button.
+11. Wait until **GPGPCDE** finishes rebooting.
+12. Reopen **GPGPCDE**.
+
+<br/>
+
+### 9. Enable `Apps` on **Play Store** (optional)
 
 > [!CAUTION]  
 > This method removes the [com.google.android.play.feature.HPE_EXPERIENCE](https://developer.android.com/games/playgames/pc-compatibility#detect-hpe) feature, causing the Play Store to recognize GPGPCDE as a regular Android mobile device.
@@ -244,7 +341,7 @@ Every time you update **GPGPCDE**, you must re-apply the patch.
 2. Click the `Check for update` button, if an update is available a `Download` button will appear.
 3. Click `Download` and wait for update to complete and `Relaunch` button to appear.
 4. Click `Relaunch`, if **GPGPCDE** is not running, launch it manually.
-5. Re-root **GPGPCDE**, starting from **Patch** [#2](#2-root-with-hpesuperpower).
+5. Re-root **GPGPCDE**, starting from **Patch** [#2](#2-copybackup-aggregateimg--biosrom) to [#8](#8-remove-install-restriction).
 6. Open **GPGPCDE** > Open **Magisk**, validate root has been successful.
 7. Close & exit **GPGPCDE**
 8. Reopen **GPGPCDE**.
@@ -271,14 +368,19 @@ GPGPCDE [keyboard shortcuts](https://developer.android.com/games/playgames/pg-em
 Note: <kbd>Ctrl</kbd> + <kbd>h</kbd> and <kbd>Ctrl</kbd> + <kbd>b</kbd> are provided for development purposes only. Don't rely on them in your shipping game.
 
 
-### [Method: 1](../1/README.md)
+### [Method: 2](../2/README.md)
 
 <br/>
 
 ## Credits
 
-- [GPGPC Community](https://discord.gg/UYPSypWA8M)
-- [hpesuperpower](https://github.com/chsbuffer/hpesuperpower?tab=readme-ov-file)
+- [XDA Forums t-4486817#post-89464596](https://xdaforums.com/t/4486817/post-89464596)
+- [XDA Forums t-4486817#post-90018526](https://xdaforums.com/t/4486817/post-90018526)
+- [ChsBuffer](https://github.com/chsbuffer)
+- [XDA Forums t-4656397](https://xdaforums.com/t/4656397/)
+- [XDA Sideloading apps on GPGPCDE](https://www.xda-developers.com/sideload-apps-on-google-play-games-emulator/)
+- [kilObit 7496373535076556798](https://kil0bit.blogspot.com/2023/11/google-launched-official-android.html)
+- [Phandroid p-339416](https://phandroid.com/?p=339416)
 
 <br/>
 
@@ -297,5 +399,5 @@ The authors and contributors are **not responsible for any damage, data loss, or
 
 <!-- Badges -->
 
-[Badge Magisk]: https://img.shields.io/badge/Magisk-v28.1-00AF9C.svg?logo=Magisk
+[Badge Magisk]: https://img.shields.io/badge/Magisk-v30.7-00AF9C.svg?logo=Magisk
 [Badge GPGPC Dev]: https://img.shields.io/badge/Google%20Play%20Games%20on%20PC%20(Dev)-26.4.112.1-1A8039.svg?logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdmlld0JveD0iMCAwIDQ3OC42MzMgNTM0LjQ3OCI+PHBhdGggZmlsbD0iIzFBODAzOSIgZD0iTTAgNDc1LjIyVjU5LjIyOUMwIDEzLjcyNyA0OS4yODUtMTQuNzc2IDg4Ljc3NCA4LjAyN2wzNjAuMjggMjA3Ljk2OWMzOS40MzggMjIuODAzIDM5LjQzOCA3OS43MDUgMCAxMDIuNDU2TDg4Ljc3NCA1MjYuNDczQzQ5LjMzNiA1NDkuMjI0IDAgNTIwLjc3MyAwIDQ3NS4yMnoiLz48cGF0aCBmaWxsPSIjOTRGRUQ2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNTcuOTggMjM2LjIwOGMtNy45ODEtNDYuNDg2LTQ4LjMtODAuMjc1LTk1LjQ2LTgwLjI3NUgwdjIyMi41ODRoMTE1LjU2N2w4NC4wMDcgODQuMDA3IDg5LjAzNC01MS40MDktMzAuNjI4LTE3NC45MDd6bS0xNDIuNjItNTAuMTY2YzE1LjM0IDAgMjcuODI5IDEyLjQ5IDI3LjgyOSAyNy45ODUgMCAxNS4zNC0xMi40OSAyNy44MjktMjcuODI5IDI3LjgyOS0xNS40OTUgMC0yNy45ODUtMTIuNDktMjcuOTg1LTI3LjgyOSAwLTE1LjQ5NSAxMi40OS0yNy45ODUgMjcuOTg1LTI3Ljk4NXpNNjIuMDg1IDI5NS4xODNjLTE1LjM0IDAtMjcuODI5LTEyLjQ5LTI3LjgyOS0yNy45ODUgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuODI5LTI3LjgyOSAxNS40OTUgMCAyNy45ODUgMTIuNDkgMjcuOTg1IDI3LjgyOSAwIDE1LjQ5Ni0xMi40OSAyNy45ODUtMjcuOTg1IDI3Ljk4NXptNTMuMjc1IDUzLjEyYy0xNS40OTUgMC0yNy45ODUtMTIuMzM0LTI3Ljk4NS0yNy44MjkgMC0xNS4zNCAxMi40OS0yNy44MjkgMjcuOTg1LTI3LjgyOSAxNS4zNCAwIDI3LjgyOSAxMi40OSAyNy44MjkgMjcuODI5LjAwMSAxNS40OTUtMTIuNDg5IDI3LjgyOS0yNy44MjkgMjcuODI5em01My44NDUtNTMuMTJjLTE1LjQ5NSAwLTI3Ljk4NS0xMi40OS0yNy45ODUtMjcuOTg1IDAtMTUuMzQgMTIuNDktMjcuODI5IDI3Ljk4NS0yNy44MjkgMTUuMzQgMCAyNy44MjkgMTIuNDkgMjcuODI5IDI3LjgyOS0uMDUxIDE1LjQ5Ni0xMi41NDEgMjcuOTg1LTI3LjgyOSAyNy45ODV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=
