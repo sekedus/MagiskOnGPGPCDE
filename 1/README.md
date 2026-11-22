@@ -304,7 +304,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
       - `External Storage Manager`
       - `Background Downloads`
       - `Notifications`
-      - `App Links` - [supported links are grayed out](https://www.reddit.com/r/GrapheneOS/comments/16f7mg2/in_aurora_store_settings_playgooglecom_in_open/)
+      - `App Links` - [supported links are grayed out](https://web.archive.org/web/20250223015126/https://www.reddit.com/r/GrapheneOS/comments/16f7mg2/in_aurora_store_settings_playgooglecom_in_open/)
     - Click `Finish`
 3. Click the **3 dots** in the top right corner :
     - `Spoof manager` > select `Device`, e.g.: `Samsung S20 Ultra` > `Restart`

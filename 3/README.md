@@ -210,7 +210,7 @@ Root Google Play Games on PC Developer Emulator (GPGPCDE) with Magisk.
       - `External Storage Manager`
       - `Background Downloads`
       - `Notifications`
-      - `App Links` - [supported links are grayed out](https://www.reddit.com/r/GrapheneOS/comments/16f7mg2/in_aurora_store_settings_playgooglecom_in_open/)
+      - `App Links` - [supported links are grayed out](https://web.archive.org/web/20250223015126/https://www.reddit.com/r/GrapheneOS/comments/16f7mg2/in_aurora_store_settings_playgooglecom_in_open/)
     - Click `Finish`
 3. Click the **3 dots** in the top right corner :
     - `Spoof manager` > select `Device`, e.g.: `Samsung S20 Ultra` > `Restart`
@@ -248,7 +248,7 @@ Every time you update **GPGPCDE**, you must re-apply the patch.
 2. Click the `Check for update` button, if an update is available a `Download` button will appear.
 3. Click `Download` and wait for update to complete and `Relaunch` button to appear.
 4. Click `Relaunch`, if **GPGPCDE** is not running, launch it manually.
-5. Re-root **GPGPCDE**, starting from **Patch** [#2](#2-root-with-hpesuperpower).
+5. Re-root **GPGPCDE**, starting from **Patch** [#2](#2-root-with-gpgpc-patcher).
 6. Open **GPGPCDE** > Open **Magisk**, validate root has been successful.
 7. Close & exit **GPGPCDE**
 8. Reopen **GPGPCDE**.
